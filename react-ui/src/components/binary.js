@@ -1,5 +1,3 @@
-"use strict";
-
 const binarySearch = searchItem => {
   const searchList = [7, 8, 2, 5, 6, 9, 0, 10];
   // const { input: searchItem } = props.formInput;
