@@ -12,38 +12,39 @@ class Main extends Component {
     searchInput: { input: 0 },
     result: " ",
     inputArray: [],
-    inputArrayLength: { value: 0 }
+    inputArrayLength: { value: 0 },
   };
 
-  handleSearch = async event => {
+  handleSearch = async (event) => {
     event.preventDefault();
     const { input } = this.state.searchInput;
     fetch(
       `https://h1heuomixl.execute-api.us-east-1.amazonaws.com/dev/api/binary_search/${input}`
     )
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         console.log("in data");
         this.setState({ result: data.result });
       });
     console.log("finished");
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const searchInput = { ...this.state.searchInput };
     searchInput.input = event.currentTarget.value;
     console.log(searchInput.input);
     this.setState({ searchInput });
   };
 
-  handleArray = event => {
+  handleArray = (event) => {
     let inputArray = [...this.state.inputArray];
     inputArray = event.currentTarget.value;
-    console.log(event.currentTarget.value);
+    // console.log(event.currentTarget.value);
     this.setState({ inputArray });
+    // console.log(inputArray);
   };
 
-  handleArrayLength = event => {
+  handleArrayLength = (event) => {
     let inputArrayLength = { ...this.state.inputArrayLength };
     while (inputArrayLength.value < event.currentTarget.value) {
       inputArrayLength.value += 1;
@@ -57,8 +58,11 @@ class Main extends Component {
       searchInput,
       menuItems,
       inputArray,
-      inputArrayLength
+      inputArrayLength,
     } = this.state;
+
+    console.log(inputArray);
+
     return (
       <Router>
         <div className="main">
